@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>PsicoVida - Comunidad</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon-16x16.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif !important;
+        }
+        
+        /* Estilos del Blog */
+        .blog-container {
+            margin: 40px 0;
+        }
+        
+        .post-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .post-header {
+            background-color: #0d6efd;
+            color: white;
+            padding: 15px;
+        }
+        
+        .post-body {
+            padding: 20px;
+        }
+        
+        .post-footer {
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            border-top: 1px solid #eee;
+            font-size: 14px;
+            color: #6c757d;
+        }
+        
+        .comment-section {
+            padding: 15px 20px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+        
+        .comment {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 5px;
+            border-left: 3px solid #0d6efd;
+        }
+        
+        .comment-form {
+            margin-top: 15px;
+        }
+        
+        .new-post-form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .form-title {
+            color: #0d6efd;
+            margin-bottom: 20px;
+        }
+        
+        .btn-post {
+            background-color: #0d6efd;
+            color: white;
+        }
+        
+        .author-badge {
+            background-color: #0d6efd;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 12px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        .alert {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .alert-success {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+        
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #842029;
+        }
+    </style>
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h1 class="m-0 text-primary"><i class="far fa-hospital me-3"></i>PsicoVida</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link">Inicio</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Recursos</a>
+                    <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                        <a href="articles.html" class="dropdown-item">Articulos</a>
+                        <a href="audioVisual.html" class="dropdown-item">Videos</a>
+                        <a href="guias.html" class="dropdown-item">Guias</a>
+                    </div>
+                </div>
+                <a href="comunidad.html" class="nav-item nav-link active">Comunidad</a>
+            </div>
+            <a href="contact.html" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Habla con alguien<i class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Comunidad PsicoVida</h1>
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb text-uppercase mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="index.html">Inicio</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Comunidad</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Blog Content Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <!-- Formulario para nuevo post -->
+            <div class="new-post-form wow fadeInUp" data-wow-delay="0.1s">
+                <h3 class="form-title"><i class="fas fa-pen-alt me-2"></i>Crear nuevo tema de discusión</h3>
+                <div id="formAlert"></div>
+                <form id="newPostForm">
+                    <div class="mb-3">
+                        <label for="postAuthor" class="form-label">Tu nombre (único)</label>
+                        <input type="text" class="form-control" id="postAuthor" required placeholder="Cómo quieres que te identifiquemos (no podrás cambiarlo)">
+                    </div>
+                    <div class="mb-3">
+                        <label for="postTitle" class="form-label">Título</label>
+                        <input type="text" class="form-control" id="postTitle" required placeholder="Escribe un título claro para tu tema">
+                    </div>
+                    <div class="mb-3">
+                        <label for="postContent" class="form-label">Contenido (puedes incluir números)</label>
+                        <textarea class="form-control" id="postContent" rows="4" required placeholder="Describe tu situación, pregunta o tema que quieres compartir"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-post" id="submitPostBtn">Publicar tema</button>
+                </form>
+            </div>
+
+            <!-- Listado de posts -->
+            <div class="blog-container">
+                <h3 class="mb-4 wow fadeInUp" data-wow-delay="0.2s"><i class="fas fa-comments me-2"></i>Últimos temas de discusión</h3>
+                <div id="postsContainer"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Blog Content End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Ubicación</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Cuenca - Ecu</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>335486 o al 1800 DELITO</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Enlaces rápidos</h5>
+                    <a class="btn btn-link" href="#sobreNosotros">Sobre nosotros</a>
+                    <a class="btn btn-link" href="contact.html">Contacto</a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Hoja informativa</h5>
+                    <p>Adquirir más información acerca de la intervención Psicosocial.</p>
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Tu correo">
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Enviar</button>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Emergencias</h5>
+                    <p>Si estás viviendo una situación de violencia, ¡alerta a las autoridades! Puedes:</p>
+                    <ul>
+                        <li>Llamar al 911</li>
+                        <li>Llamar a 1800DELITO Opción 4</li>
+                        <li>Descargar la APP911</li>
+                    </ul>
+                    <p class="small">Los servicios son gratuitos para todas las personas.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">PsicoVida</a>, Todos los derechos reservados.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        Diseñado por <a class="border-bottom" href="https://">IsraCode</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <!-- Blog Script -->
+    <script>
+        // Configura Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBoO6SwcnaEIo1G1m3Af12Dy3uc34D_cSQ",
+            authDomain: "makeupdomi-58620.firebaseapp.com",
+            databaseURL: "https://makeupdomi-58620-default-rtdb.firebaseio.com",
+            projectId: "makeupdomi-58620",
+            storageBucket: "makeupdomi-58620.appspot.com",
+            messagingSenderId: "467462638561",
+            appId: "1:467462638561:web:2900d34b5e44e2727fa0a0",
+            measurementId: "G-PMEDMHJM9R"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Mostrar alerta
+        function showAlert(message, type) {
+            const alertDiv = document.getElementById('formAlert');
+            alertDiv.innerHTML = `
+                <div class="alert alert-${type}">
+                    ${message}
+                </div>
+            `;
+            setTimeout(() => {
+                alertDiv.innerHTML = '';
+            }, 5000);
+        }
+
+        // Verificar límites de publicación
+        async function checkPostLimits(author) {
+            try {
+                const snapshot = await database.ref('posts/').once('value');
+                const now = Date.now();
+                const twentyFourHoursAgo = now - (24 * 60 * 60 * 1000);
+                
+                let count = 0;
+                let lastTime = 0;
+                
+                snapshot.forEach((childSnapshot) => {
+                    const post = childSnapshot.val();
+                    if (post.author === author) {
+                        if (post.timestamp > twentyFourHoursAgo) {
+                            count++;
+                        }
+                        if (post.timestamp > lastTime) {
+                            lastTime = post.timestamp;
+                        }
+                    }
+                });
+                
+                return {
+                    canPost: count < 5, // Límite de 5 posts
+                    remaining: 5 - count,
+                    nextPostTime: lastTime ? new Date(lastTime + (24 * 60 * 60 * 1000)) : null
+                };
+            } catch (error) {
+                console.error("Error checking post limits:", error);
+                return { canPost: false };
+            }
+        }
+
+        // Manejar el formulario de nuevo post
+        document.getElementById('newPostForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitPostBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Publicando...';
+            
+            const author = document.getElementById('postAuthor').value.trim();
+            const title = document.getElementById('postTitle').value.trim();
+            const content = document.getElementById('postContent').value.trim();
+            
+            // Validación básica
+            if (!author || !title || !content) {
+                showAlert('Todos los campos son requeridos', 'danger');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Publicar tema';
+                return;
+            }
+            
+            try {
+                // Verificar límites de publicación
+                const limits = await checkPostLimits(author);
+                
+                if (!limits.canPost) {
+                    const nextTime = limits.nextPostTime.toLocaleTimeString();
+                    showAlert(`Has alcanzado el límite de 5 publicaciones en 24 horas. Podrás publicar de nuevo después de ${nextTime}`, 'danger');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Publicar tema';
+                    return;
+                }
+                
+                // Verificar si el autor ya existe en publicaciones recientes
+                const authorSnapshot = await database.ref('posts/').orderByChild('author').equalTo(author).once('value');
+                if (authorSnapshot.exists()) {
+                    showAlert('Este nombre de usuario ya está en uso. Por favor elige otro.', 'danger');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Publicar tema';
+                    return;
+                }
+                
+                // Crear nuevo post
+                const newPostRef = database.ref('posts/').push();
+                await newPostRef.set({
+                    author,
+                    title,
+                    content,
+                    timestamp: Date.now()
+                });
+                
+                // Limpiar formulario (excepto el autor)
+                document.getElementById('postTitle').value = '';
+                document.getElementById('postContent').value = '';
+                
+                showAlert(`¡Tema publicado con éxito! Te quedan ${limits.remaining - 1} publicaciones en las próximas 24 horas.`, 'success');
+                
+            } catch (error) {
+                console.error("Error al publicar:", error);
+                showAlert('Error al publicar el tema. Por favor intenta nuevamente.', 'danger');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Publicar tema';
+            }
+        });
+
+        // Manejar formularios de comentarios (delegación de eventos)
+        document.addEventListener('submit', function(e) {
+            if (e.target.classList.contains('addCommentForm')) {
+                e.preventDefault();
+                
+                const form = e.target;
+                const postId = form.getAttribute('data-postid');
+                const author = form.querySelector('input[name="commentAuthor"]').value.trim();
+                const content = form.querySelector('textarea[name="commentContent"]').value.trim();
+                
+                if (!author || !content) {
+                    alert('Por favor completa todos los campos del comentario');
+                    return;
+                }
+                
+                const commentRef = database.ref(`posts/${postId}/comments`).push();
+                commentRef.set({
+                    author,
+                    content,
+                    timestamp: Date.now()
+                });
+                
+                form.reset();
+            }
+        });
+
+        // Renderizar posts
+        database.ref('posts/').on('value', (snapshot) => {
+            const postsContainer = document.getElementById('postsContainer');
+            postsContainer.innerHTML = '';
+            
+            const posts = [];
+            snapshot.forEach((childSnapshot) => {
+                const post = childSnapshot.val();
+                post.id = childSnapshot.key;
+                posts.push(post);
+            });
+            
+            // Ordenar por fecha (más reciente primero)
+            posts.sort((a, b) => b.timestamp - a.timestamp);
+            
+            // Renderizar cada post
+            posts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.className = 'post-card wow fadeInUp';
+                postElement.innerHTML = `
+                    <div class="post-header">
+                        <h4>${post.title}</h4>
+                    </div>
+                    <div class="post-body">
+                        <p>${post.content.replace(/\n/g, '<br>')}</p>
+                    </div>
+                    <div class="post-footer">
+                        <span class="author-badge"><i class="fas fa-user"></i> ${post.author}</span>
+                        <span class="timestamp"><i class="far fa-clock"></i> ${new Date(post.timestamp).toLocaleString()}</span>
+                    </div>
+                    <div class="comment-section">
+                        <h5><i class="fas fa-reply me-2"></i>${post.comments ? Object.keys(post.comments).length : 0} respuestas</h5>
+                        ${post.comments ? Object.values(post.comments).map(comment => `
+                            <div class="comment">
+                                <p><strong>${comment.author}:</strong> ${comment.content}</p>
+                                <small>${new Date(comment.timestamp).toLocaleString()}</small>
+                            </div>
+                        `).join('') : '<p>No hay respuestas aún</p>'}
+                        <div class="comment-form mt-3">
+                            <form class="addCommentForm" data-postid="${post.id}">
+                                <div class="mb-2">
+                                    <input type="text" name="commentAuthor" class="form-control form-control-sm" placeholder="Tu nombre" required>
+                                </div>
+                                <div class="mb-2">
+                                    <textarea name="commentContent" class="form-control form-control-sm" rows="2" placeholder="Escribe tu respuesta..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-post btn-sm">Responder</button>
+                            </form>
+                        </div>
+                    </div>
+                `;
+                postsContainer.appendChild(postElement);
+            });
+            
+            // Inicializar animaciones
+            new WOW().init();
+        });
+    </script>
+</body>
+</html>
