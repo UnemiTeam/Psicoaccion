@@ -1,8 +1,8 @@
 /********** Template CSS **********/
 :root {
-    --primary: #0463FA;
+    --primary: #700c89  !important;
     --light: #EFF5FF;
-    --dark: #1B2C51;
+    --dark: #2f0c38;
 }
 
 .fw-medium {
@@ -238,11 +238,72 @@
 }
 
 .page-header {
-    background: url(../img/header-page.jpg) top center no-repeat;
+    background: url(../img/banner1.avif) top center no-repeat;
     background-size: cover;
     text-shadow: 0 0 30px rgba(0, 0, 0, .1);
 }
 
+.page-header2 {
+    background: 
+    /* Capa oscura para mejorar legibilidad del texto (opcional) */
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url(../img/b2.jpg) center/cover no-repeat;
+
+/* Altura adaptable */
+height: 60vh;  /* 60% del viewport height (ajustable) */
+min-height: 300px;  /* Mínimo para móviles */
+max-height: 600px;  /* Máximo para PCs */
+
+/* Centrado del contenido */
+display: flex;
+align-items: center;
+justify-content: center;
+
+/* Mejora de legibilidad */
+text-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+color: white; /* Color del texto (ajustable) */
+padding: 20px;
+box-sizing: border-box;
+    
+}
+
+
+.page-header3 {
+    background: url(../img/b3.jpg) top center no-repeat;
+    background-size: cover;
+    text-shadow: 0 0 30px rgba(0, 0, 0, .1);
+}
+
+.page-header4 {
+    background: 
+        /* Capa oscura para mejorar legibilidad del texto (opcional) */
+        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+        url(../img/NRADELRHCZH5RDRTU2EJ5JA4UA.avif) center/cover no-repeat;
+    
+    /* Altura adaptable */
+    height: 60vh;  /* 60% del viewport height (ajustable) */
+    min-height: 300px;  /* Mínimo para móviles */
+    max-height: 600px;  /* Máximo para PCs */
+    
+    /* Centrado del contenido */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Mejora de legibilidad */
+    text-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    color: white; /* Color del texto (ajustable) */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Ajuste específico para PC */
+@media (min-width: 992px) {
+    .page-header4 {
+        height: 50vh;  /* Más bajo en desktop */
+        background-position: center center; /* Asegura centrado */
+    }
+}
 .breadcrumb-item + .breadcrumb-item::before {
     color: var(--light);
 }
@@ -481,7 +542,7 @@ body {
 }
 
 .footer .btn.btn-social:hover {
-    color: var(--primary);
+    color: var(--dark);
 }
 
 .footer .btn.btn-link {
@@ -505,7 +566,7 @@ body {
 }
 
 .footer .btn.btn-link:hover {
-    color: var(--primary);
+    color: var(--light);
     letter-spacing: 1px;
     box-shadow: none;
 }
