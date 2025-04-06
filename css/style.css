@@ -428,7 +428,7 @@ box-sizing: border-box;
 }
 
 .bootstrap-datetimepicker-widget table td.today::before {
-    border-bottom-color: var(--primary);
+    border-bottom-color: var(--light);
 }
 
 
@@ -582,5 +582,5 @@ body {
 }
 
 .footer .copyright a:hover {
-    color: var(--primary);
+    color: var(--dark);
 }
